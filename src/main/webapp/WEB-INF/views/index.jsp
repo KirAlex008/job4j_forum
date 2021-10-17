@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -14,6 +16,7 @@
     <title>Форум job4j</title>
 </head>
 <body>
+<a href="<c:url value='/create'/>">Добавить</a>
 <div class="container mt-3">
     <div class="row">
         <h4>Форум job4j</h4>
@@ -39,7 +42,7 @@
                         </td>
                         <td><c:out value="${post.name}"/></td>
                         <td><c:out value="${post.description}"/></td>
-                        <td><c:out value="${post.created}"/></td>
+                        <td><c:out value="${post.created}"/> </td>
                     </tr>
             </c:forEach>
 

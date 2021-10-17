@@ -8,7 +8,7 @@
             <td>Название:</td>
             <td><input type='text' name='name' value="${post.name}"></td>
             <td>Описание:</td>
-            <td><input type='text' name='text' value="${post.text}"></td>
+            <td><input type='text' name='text' value="${post.description}"></td>
 
         <tr>
             <td colspan='2'><input name="submit" type="submit" value="Сохранить" /></td>

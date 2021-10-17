@@ -23,8 +23,7 @@ public class PostControl {
 
     @GetMapping("/create")
     public String create(Model model) {
-        List<Post> posts = new ArrayList<>();
-        postService.getAll().forEach(posts::add);
+        List<Post> posts = postService.getAll();
         model.addAttribute("posts", posts);
         return "post/create";
     }
@@ -44,7 +43,7 @@ public class PostControl {
 
     @PostMapping("/update")
     public String update(@ModelAttribute Post post) {
-        postService.update(post);
+        postService.save(post);
         return "redirect:/";
     }
 }
