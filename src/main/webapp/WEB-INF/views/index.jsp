@@ -17,6 +17,9 @@
 </head>
 <body>
 <a href="<c:url value='/create'/>">Добавить</a>
+<div>
+    Login as : ${user.username}
+</div>
 <div class="container mt-3">
     <div class="row">
         <h4>Форум job4j</h4>
