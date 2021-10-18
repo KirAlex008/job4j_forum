@@ -14,11 +14,15 @@ public class Post {
     private String name;
     private String description;
     private Calendar created = Calendar.getInstance();
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    public static Post of(String name, String description) {
+    public static Post of(String name, String description, User user) {
         Post post = new Post();
         post.name = name;
         post.description = description;
+        post.user = user;
         return post;
     }
 
@@ -72,5 +76,13 @@ public class Post {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, description, created);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

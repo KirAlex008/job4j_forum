@@ -2,6 +2,7 @@ package ru.job4j.forum.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.Post;
+import ru.job4j.forum.model.User;
 import ru.job4j.forum.store.PostRepository;
 
 import java.util.ArrayList;
@@ -30,6 +31,12 @@ public class PostService {
         posts.save(post);
         return post;
     };
+
+    public List<Post> findAllByUser(User user) {
+        List<Post> rsl = new ArrayList<>();
+        posts.findAllByUser(user).forEach(rsl::add);
+        return rsl;
+    }
 
 
 }
