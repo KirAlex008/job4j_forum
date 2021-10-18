@@ -1,6 +1,7 @@
 package ru.job4j.forum.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,21 +16,25 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
+/*    @Autowired
+    PasswordEncoder passwordEncoder;*/
 
-    @Autowired
-    private DataSource dataSource;
+    private DataSource ds;
+
+    public WebSecurity(@Qualifier("ds") DataSource ds) {
+        this.ds = ds;
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .jdbcAuthentication()
-                .dataSource(dataSource)
-                .usersByUsernameQuery("select username, password, enabled from users where username = ?")
+        auth.jdbcAuthentication().dataSource(ds)
+                .usersByUsernameQuery("select username, password, enabled "
+                        + "from users "
+                        + "where username = ?")
                 .authoritiesByUsernameQuery(
-                        "select u.username, a.authority "
+                        " select u.username, a.authority "
                                 + "from authorities as a, users as u "
-                                + "where u.username = ? and u.authority_id = a.id"
-                );
+                                + "where u.username = ? and u.authority_id = a.id");
     }
 
     @Bean
