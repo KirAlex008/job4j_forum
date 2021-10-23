@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.model.User;
 import ru.job4j.forum.service.PostService;
+import ru.job4j.forum.service.UserService;
 import ru.job4j.forum.store.UserRepository;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.Optional;
 
 @Controller
 public class PostControl {
+
     private final PostService postService;
     private final UserRepository userRepository;
 

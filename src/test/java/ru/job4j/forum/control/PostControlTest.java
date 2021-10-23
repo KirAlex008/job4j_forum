@@ -14,12 +14,20 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.job4j.forum.Main;
+import ru.job4j.forum.service.PostService;
+import ru.job4j.forum.service.UserService;
 
 @SpringBootTest(classes = Main.class)
 @AutoConfigureMockMvc
 class PostControlTest {
     @Autowired
     private MockMvc mockMvc;
+
+    @MockBean
+    private PostService postService;
+
+    @MockBean
+    private UserService userService;
 
     @Test
     @WithMockUser
