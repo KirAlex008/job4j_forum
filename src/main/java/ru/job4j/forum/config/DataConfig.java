@@ -41,7 +41,7 @@ public class DataConfig {
         vendorAdapter.setGenerateDdl(true);
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("ru.job4j.forum");
+        factory.setPackagesToScan("ru.job4j.forum.model");
         factory.setDataSource(ds);
         return factory;
     }
