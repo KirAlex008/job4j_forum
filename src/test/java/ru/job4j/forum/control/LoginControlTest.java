@@ -30,6 +30,7 @@ class LoginControlTest {
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/login?logout=true"));
+
     }
 
 
