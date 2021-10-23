@@ -26,7 +26,7 @@ class LoginControlTest {
     private MockMvc mockMvc;
 
     @Test
-    @WithMockUser(username = "root", password = "root")
+    @WithMockUser
     public void shouldGoToLogin() throws Exception {
         this.mockMvc.perform(get("/logout"))
                 .andDo(print())
