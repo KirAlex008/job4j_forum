@@ -1,6 +1,7 @@
 package ru.job4j.forum.config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,7 @@ import java.util.Properties;
 public class DataConfig {
 
     @Bean
+    @Qualifier("mainDataSource")
     public DataSource ds(@Value("${spring.datasource.driver-class-name}") String driver,
                          @Value("${spring.datasource.url}") String url,
                          @Value("${spring.datasource.username}") String username,
@@ -36,7 +38,7 @@ public class DataConfig {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource ds) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Qualifier("mainDataSource") DataSource ds) {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(true);
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
