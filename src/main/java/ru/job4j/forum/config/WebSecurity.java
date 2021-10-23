@@ -19,11 +19,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 /*    @Autowired
     PasswordEncoder passwordEncoder;*/
 
-    private DataSource ds;
-
-    public WebSecurity(@Qualifier("ds") DataSource ds) {
-        this.ds = ds;
-    }
+    @Autowired
+    DataSource ds;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
