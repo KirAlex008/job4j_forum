@@ -27,9 +27,6 @@ public class IndexControlTest {
     @MockBean
     private PostService postService;
 
-    @MockBean
-    private UserService userService;
-
     @Test
     @WithMockUser
     public void shouldReturnDefaultMessage() throws Exception {
