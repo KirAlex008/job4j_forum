@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.job4j.forum.Main;
 import ru.job4j.forum.service.PostService;
@@ -19,12 +20,13 @@ import ru.job4j.forum.service.UserService;
 
 @SpringBootTest(classes = Main.class)
 @AutoConfigureMockMvc
+@ActiveProfiles("test")
 class LoginControlTest {
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    @WithMockUser(username = "root", password = "root")
+    @WithMockUser
     public void shouldGoToLogin() throws Exception {
         this.mockMvc.perform(get("/logout"))
                 .andDo(print())
