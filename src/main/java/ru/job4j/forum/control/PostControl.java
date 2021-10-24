@@ -3,10 +3,7 @@ package ru.job4j.forum.control;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.model.User;
 import ru.job4j.forum.service.PostService;
@@ -26,8 +23,6 @@ public class PostControl {
         this.postService = postService;
         this.userRepository = userRepository;
     }
-
-
 
     @GetMapping("/create")
     public String create(Model model) {
@@ -58,5 +53,17 @@ public class PostControl {
     public String update(@ModelAttribute Post post) {
         postService.save(post);
         return "redirect:/";
+    }
+
+/*    @RequestMapping(value = "/edit?id={id}", method = RequestMethod.GET)
+    public String get(@PathVariable int id, Model model) {
+        model.addAttribute("post", postService.findById(id));
+        return "post";
+    }*/
+
+    @RequestMapping(value = "/post/create", method = RequestMethod.POST)
+    public String create(@ModelAttribute Post post) {
+        postService.save(post);
+        return "redirect:/post/" + post.getId();
     }
 }
