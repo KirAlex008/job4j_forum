@@ -14,6 +14,7 @@
         <maven.compiler.target>13</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>5.2.5.RELEASE</spring.version>
+        <spring.profiles.active>local,no-liquibase</spring.profiles.active>
     </properties>
 
     <parent>
