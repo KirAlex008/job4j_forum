@@ -15,12 +15,12 @@ import javax.sql.DataSource;
 public class Main extends SpringBootServletInitializer {
 
     @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Main.class);
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(Main.class);
     }
 
     @Bean
-    public SpringLiquibase liquibase(@Qualifier("mainDataSource")DataSource ds) {
+    public SpringLiquibase liquibase(DataSource ds) {
         SpringLiquibase liquibase = new SpringLiquibase();
         liquibase.setChangeLog("classpath:liquibase-changeLog.xml");
         liquibase.setDataSource(ds);

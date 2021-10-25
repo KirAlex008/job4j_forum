@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
                        username VARCHAR(50),
                        password VARCHAR(100),
                        enabled boolean default true,
-                       authority_id int not null references authorities(id)
+                       authority_id int references authorities(id)
 );
 
 create table IF NOT EXISTS posts (
