@@ -1,11 +1,11 @@
 CREATE TABLE IF NOT EXISTS authorities (
                              id serial primary key,
-                             authority VARCHAR(50) NOT NULL
+                             authority VARCHAR(50)
 );
 CREATE TABLE IF NOT EXISTS users (
                        id serial primary key,
-                       username VARCHAR(50) NOT NULL unique,
-                       password VARCHAR(100) NOT NULL,
+                       username VARCHAR(50),
+                       password VARCHAR(100),
                        enabled boolean default true,
                        authority_id int not null references authorities(id)
 );
