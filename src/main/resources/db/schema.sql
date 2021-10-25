@@ -14,6 +14,6 @@ create table IF NOT EXISTS posts (
                        id serial primary key,
                        name varchar(2000),
                        description varchar(255),
-                       created timestamp without time zone not null default now(),
+                       created timestamp,
                        user_id int references users(id)
 );
