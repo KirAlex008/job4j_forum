@@ -55,11 +55,6 @@ public class PostControl {
         return "redirect:/";
     }
 
-/*    @RequestMapping(value = "/edit?id={id}", method = RequestMethod.GET)
-    public String get(@PathVariable int id, Model model) {
-        model.addAttribute("post", postService.findById(id));
-        return "post";
-    }*/
 
     @RequestMapping(value = "/post/create", method = RequestMethod.POST)
     public String create(@ModelAttribute Post post) {

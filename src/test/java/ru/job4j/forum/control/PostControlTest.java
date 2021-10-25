@@ -109,16 +109,4 @@ class PostControlTest {
         assertThat(argument.getValue().getName(), is("Куплю ладу-грант. Дорого."));
     }
 
-    @Test
-    @WithMockUser
-    public void shouldReturnUpdateModel(@PathVariable int id) throws Exception {
-        this.mockMvc.perform(get("/edit")
-                .param("name", "Куплю ладу-грант. Дорого."))
-                .andDo(print())
-                .andExpect(status().is3xxRedirection());
-        ArgumentCaptor<Post> argument = ArgumentCaptor.forClass(Post.class);
-        verify(postService).save(argument.capture());
-        assertThat(argument.getValue().getName(), is("Куплю ладу-грант. Дорого."));
-    }
-
 }
