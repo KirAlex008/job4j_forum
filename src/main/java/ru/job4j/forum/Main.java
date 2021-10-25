@@ -12,6 +12,8 @@ import javax.sql.DataSource;
 
 @SpringBootApplication
 public class Main extends SpringBootServletInitializer {
+    @Autowired
+    DataSource ds;
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
